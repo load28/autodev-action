@@ -24,6 +24,11 @@ fi
 git config --global user.name "AutoDev Bot"
 git config --global user.email "autodev@github.com"
 
+# Fix: Add safe.directory for GitHub Actions workspace
+# This is required for Git 2.35.2+ when running in Docker containers
+# to prevent "fatal: detected dubious ownership" error
+git config --global --add safe.directory /github/workspace
+
 # Set Claude API key for Claude Code CLI
 export ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
 
