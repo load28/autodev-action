@@ -49,8 +49,8 @@ echo "================================"
 
 # Run Claude Code in non-interactive mode
 # Permissions are bypassed via ~/.claude/settings.json (configured in Dockerfile)
-# --max-turns: limit maximum turns to prevent infinite loops
-claude "$INPUT_PROMPT" --max-turns 10 2>&1 || {
+# No max-turns limit to allow completion of complex tasks
+claude "$INPUT_PROMPT" 2>&1 || {
     EXIT_CODE=$?
     echo ""
     echo "⚠️ Claude Code exited with code $EXIT_CODE"
@@ -114,7 +114,7 @@ This PR was automatically created by AutoDev using Claude Code.
 ### How it was generated
 
 \`\`\`bash
-claude \"$INPUT_PROMPT\" --max-turns 10
+claude \"$INPUT_PROMPT\"
 \`\`\`
 
 ### Review checklist
